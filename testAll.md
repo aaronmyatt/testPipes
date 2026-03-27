@@ -34,17 +34,6 @@ assert(dirFiles.includes('denoflare'), 'Denoflare template not found')
 console.log('✅ custom templates')
 ```
 
-## envTest
-```ts
-import test2 from 'envTest'
-//Object.assign(input,await test2.process())
-const out = await test2.process()
-assert(out.fromOpts.inGlobal, 'value written from global config.json not present')
-assert(out.fromOpts.inPipe, 'value written from local json block not present')
-assert(out.dotEnv === 'yaaaaas', 'value written from .env not present')
-console.log('✅ env and config.json variables')
-```
-
 ## nested config
 ```ts
 import test3 from 'deeperConfig'
