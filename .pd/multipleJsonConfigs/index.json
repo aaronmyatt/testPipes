@@ -1,0 +1,46 @@
+{
+  "mdPath": "/Users/aaronmyatt/pipes/core/testPipes/multipleJsonConfigs.md",
+  "fileName": "multipleJsonConfigs",
+  "dir": ".pd/multipleJsonConfigs",
+  "absoluteDir": "/Users/aaronmyatt/pipes/core/testPipes/.pd/multipleJsonConfigs",
+  "config": {
+    "inGlobal": true,
+    "exclude": [
+      "envTest.md"
+    ],
+    "templates": [
+      "./denoflare.ts",
+      "./templates/cli.ts",
+      "./templates/server.ts",
+      "./templates/worker.ts",
+      "./templates/test.ts",
+      "./templates/trace.ts"
+    ],
+    "setting1": "from-first",
+    "shared": "second-value",
+    "inputs": [
+      {
+        "_name": "test1",
+        "x": 1
+      }
+    ],
+    "setting2": "from-second"
+  },
+  "name": "Multiple JSON Configs",
+  "cleanName": "MultipleJSONConfigs",
+  "steps": [
+    {
+      "code": "input.setting1 = $p.get(opts, '/config/setting1');\ninput.setting2 = $p.get(opts, '/config/setting2');\ninput.shared = $p.get(opts, '/config/shared');\n",
+      "range": [
+        11,
+        11
+      ],
+      "name": "Process",
+      "funcName": "Process",
+      "inList": false,
+      "language": "ts",
+      "headingLevel": 2
+    }
+  ],
+  "pipeDescription": "Test that multiple JSON config blocks are deep-merged correctly."
+}

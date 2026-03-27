@@ -1,0 +1,66 @@
+{
+  "mdPath": "/Users/aaronmyatt/pipes/core/testPipes/mockConditional.md",
+  "fileName": "mockConditional",
+  "dir": ".pd/mockConditional",
+  "absoluteDir": "/Users/aaronmyatt/pipes/core/testPipes/.pd/mockConditional",
+  "config": {
+    "inGlobal": true,
+    "exclude": [
+      "envTest.md"
+    ],
+    "templates": [
+      "./denoflare.ts",
+      "./templates/cli.ts",
+      "./templates/server.ts",
+      "./templates/worker.ts",
+      "./templates/test.ts",
+      "./templates/trace.ts"
+    ],
+    "inputs": [
+      {
+        "_name": "with-flag",
+        "shouldFetch": true
+      },
+      {
+        "_name": "without-flag",
+        "shouldFetch": false
+      }
+    ]
+  },
+  "name": "Mock Conditional",
+  "cleanName": "MockConditional",
+  "steps": [
+    {
+      "code": "input.fetched = \"data from external API\";\n",
+      "range": [
+        22,
+        22
+      ],
+      "name": "Maybe Fetch",
+      "funcName": "MaybeFetch",
+      "inList": true,
+      "language": "ts",
+      "mock": true,
+      "headingLevel": 2,
+      "description": "if: /shouldFetch\nmock",
+      "config": {
+        "checks": [
+          "/shouldFetch"
+        ]
+      }
+    },
+    {
+      "code": "input.result = input.fetched || \"no data\";\n",
+      "range": [
+        28,
+        28
+      ],
+      "name": "Always Runs",
+      "funcName": "AlwaysRuns",
+      "inList": false,
+      "language": "ts",
+      "headingLevel": 2
+    }
+  ],
+  "pipeDescription": "Test mock combined with conditional execution (`- if:`). The mocked step only runs when `shouldFetch` is truthy, so the cassette is only recorded/replayed when the condition is met."
+}

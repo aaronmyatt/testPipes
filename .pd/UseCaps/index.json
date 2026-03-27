@@ -1,0 +1,36 @@
+{
+  "mdPath": "/Users/aaronmyatt/pipes/core/testPipes/UseCaps.md",
+  "fileName": "UseCaps",
+  "dir": ".pd/UseCaps",
+  "absoluteDir": "/Users/aaronmyatt/pipes/core/testPipes/.pd/UseCaps",
+  "config": {
+    "inGlobal": true,
+    "exclude": [
+      "envTest.md"
+    ],
+    "templates": [
+      "./denoflare.ts",
+      "./templates/cli.ts",
+      "./templates/server.ts",
+      "./templates/worker.ts",
+      "./templates/test.ts",
+      "./templates/trace.ts"
+    ]
+  },
+  "name": "title: Frontmatter Test\ndate: 2021-01-01\ntags: [a, b, c]\nauthor: John Doe",
+  "cleanName": "titleFrontmatterTestdate20210101tagsabcauthorJohnDoe",
+  "steps": [
+    {
+      "code": "input.allCaps = 'YUP';\n",
+      "range": [
+        10,
+        10
+      ],
+      "name": "Lets use some caps",
+      "funcName": "Letsusesomecaps",
+      "inList": false,
+      "language": "ts",
+      "headingLevel": 2
+    }
+  ]
+}

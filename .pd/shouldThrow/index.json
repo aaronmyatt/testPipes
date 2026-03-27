@@ -1,0 +1,46 @@
+{
+  "mdPath": "/Users/aaronmyatt/pipes/core/testPipes/shouldThrow.md",
+  "fileName": "shouldThrow",
+  "dir": ".pd/shouldThrow",
+  "absoluteDir": "/Users/aaronmyatt/pipes/core/testPipes/.pd/shouldThrow",
+  "config": {
+    "inGlobal": true,
+    "exclude": [
+      "envTest.md"
+    ],
+    "templates": [
+      "./denoflare.ts",
+      "./templates/cli.ts",
+      "./templates/server.ts",
+      "./templates/worker.ts",
+      "./templates/test.ts",
+      "./templates/trace.ts"
+    ]
+  },
+  "name": "anonymous",
+  "cleanName": "anonymous",
+  "steps": [
+    {
+      "code": "input.shouldThrow = 'yup';\n",
+      "range": [
+        0,
+        0
+      ],
+      "name": "anonymous0",
+      "funcName": "anonymous0",
+      "inList": false,
+      "language": "ts"
+    },
+    {
+      "code": "throw new Error('This should throw')\n",
+      "range": [
+        1,
+        1
+      ],
+      "name": "anonymous1",
+      "funcName": "anonymous1",
+      "inList": false,
+      "language": "ts"
+    }
+  ]
+}

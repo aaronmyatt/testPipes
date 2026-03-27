@@ -1,0 +1,25 @@
+{
+  "pipeName": "Mock Directive",
+  "stepName": "Search API",
+  "stepIndex": 0,
+  "inputName": "directive-test",
+  "recordedAt": "2026-03-27T13:35:17.249Z",
+  "before": {
+    "_name": "directive-test",
+    "query": "hello world",
+    "mode": "test",
+    "test": true
+  },
+  "after": {
+    "_name": "directive-test",
+    "query": "hello world",
+    "mode": "test",
+    "test": true,
+    "searchResults": [
+      "result1",
+      "result2",
+      "result3"
+    ],
+    "apiCallMade": true
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "mdPath": "/Users/aaronmyatt/pipes/core/testPipes/exportIt.md",
+  "fileName": "exportIt",
+  "dir": ".pd/exportIt",
+  "absoluteDir": "/Users/aaronmyatt/pipes/core/testPipes/.pd/exportIt",
+  "config": {
+    "inGlobal": true,
+    "exclude": [
+      "envTest.md"
+    ],
+    "templates": [
+      "./denoflare.ts",
+      "./templates/cli.ts",
+      "./templates/server.ts",
+      "./templates/worker.ts",
+      "./templates/test.ts",
+      "./templates/trace.ts"
+    ],
+    "build": [
+      {
+        "format": "esm"
+      },
+      {
+        "format": "cjs"
+      },
+      {
+        "format": "iife"
+      }
+    ]
+  },
+  "name": "Exports yo",
+  "cleanName": "Exportsyo",
+  "steps": [
+    {
+      "code": "console.log('Hello World')\n",
+      "range": [
+        7,
+        7
+      ],
+      "name": "Exports yo",
+      "funcName": "Exportsyo",
+      "inList": false,
+      "language": "ts",
+      "headingLevel": 1,
+      "description": "// {\"format\": \"esm\", \"outfile\": \"dist/exportIt.mjs\"},\n// {\"format\": \"cjs\", \"outfile\": \"dist/exportIt.cjs\"},\n// {\"format\": \"iife\", \"outfile\": \"dist/exportIt.js\"}"
+    }
+  ],
+  "pipeDescription": "// {\"format\": \"esm\", \"outfile\": \"dist/exportIt.mjs\"},\n// {\"format\": \"cjs\", \"outfile\": \"dist/exportIt.cjs\"},\n// {\"format\": \"iife\", \"outfile\": \"dist/exportIt.js\"}"
+}

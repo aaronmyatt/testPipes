@@ -1,0 +1,51 @@
+{
+  "mdPath": "/Users/aaronmyatt/pipes/core/testPipes/envTest.md",
+  "fileName": "envTest",
+  "dir": ".pd/envTest",
+  "absoluteDir": "/Users/aaronmyatt/pipes/core/testPipes/.pd/envTest",
+  "config": {
+    "inGlobal": true,
+    "exclude": [
+      "envTest.md"
+    ],
+    "templates": [
+      "./denoflare.ts",
+      "./templates/cli.ts",
+      "./templates/server.ts",
+      "./templates/worker.ts",
+      "./templates/test.ts",
+      "./templates/trace.ts"
+    ],
+    "inPipe": true
+  },
+  "name": "Env Test",
+  "cleanName": "EnvTest",
+  "steps": [
+    {
+      "code": "input.fromOpts = opts.config;\n",
+      "range": [
+        21,
+        21
+      ],
+      "name": "fromConfig",
+      "funcName": "fromConfig",
+      "inList": false,
+      "language": "ts",
+      "headingLevel": 2,
+      "description": "Pipedown will automatically merge the json found in a \\`\\`\\`json block and a global `config.json` file and make the data available inside of the pipe `opts.config` property."
+    },
+    {
+      "code": "input.dotEnv = Deno.env.get('DOTENV_TEST')\n",
+      "range": [
+        25,
+        25
+      ],
+      "name": "fromDotEnv",
+      "funcName": "fromDotEnv",
+      "inList": false,
+      "language": "ts",
+      "headingLevel": 2
+    }
+  ],
+  "pipeDescription": "This is a test of the environment variable heirachy pipedown searches through."
+}

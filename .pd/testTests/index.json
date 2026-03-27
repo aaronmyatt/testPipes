@@ -1,0 +1,51 @@
+{
+  "mdPath": "/Users/aaronmyatt/pipes/core/testPipes/testTests.md",
+  "fileName": "testTests",
+  "dir": ".pd/testTests",
+  "absoluteDir": "/Users/aaronmyatt/pipes/core/testPipes/.pd/testTests",
+  "config": {
+    "inGlobal": true,
+    "exclude": [
+      "envTest.md"
+    ],
+    "templates": [
+      "./denoflare.ts",
+      "./templates/cli.ts",
+      "./templates/server.ts",
+      "./templates/worker.ts",
+      "./templates/test.ts",
+      "./templates/trace.ts"
+    ],
+    "persist": false,
+    "inputs": [
+      {
+        "points": {
+          "add": true,
+          "amount": 1
+        }
+      }
+    ]
+  },
+  "name": "Testing",
+  "cleanName": "Testing",
+  "steps": [
+    {
+      "code": "input.points = input.points.amount + 1\n",
+      "range": [
+        14,
+        14
+      ],
+      "name": "Test 1",
+      "funcName": "Test1",
+      "inList": true,
+      "language": "ts",
+      "headingLevel": 2,
+      "description": "if: /points/add",
+      "config": {
+        "checks": [
+          "/points/add"
+        ]
+      }
+    }
+  ]
+}

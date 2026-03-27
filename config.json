@@ -1,0 +1,14 @@
+{
+    "inGlobal": true,
+    "exclude": [
+        "envTest.md"
+    ],
+    "templates": [
+        "./denoflare.ts",
+        "./templates/cli.ts",
+        "./templates/server.ts",
+        "./templates/worker.ts",
+        "./templates/test.ts",
+        "./templates/trace.ts"
+    ]
+}

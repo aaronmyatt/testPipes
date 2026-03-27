@@ -1,0 +1,23 @@
+{
+  "pipeName": "Mock Mixed",
+  "stepName": "Save to DB",
+  "stepIndex": 1,
+  "inputName": "mixed",
+  "recordedAt": "2026-03-27T13:35:17.346Z",
+  "before": {
+    "_name": "mixed",
+    "prompt": "test prompt",
+    "mode": "test",
+    "test": true,
+    "llmResponse": "Generated text for: test prompt"
+  },
+  "after": {
+    "_name": "mixed",
+    "prompt": "test prompt",
+    "mode": "test",
+    "test": true,
+    "llmResponse": "Generated text for: test prompt",
+    "dbId": "mock-id-12345",
+    "saved": true
+  }
+}

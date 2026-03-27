@@ -1,0 +1,36 @@
+{
+  "mdPath": "/Users/aaronmyatt/pipes/core/testPipes/genCodeblock.md",
+  "fileName": "genCodeblock",
+  "dir": ".pd/genCodeblock",
+  "absoluteDir": "/Users/aaronmyatt/pipes/core/testPipes/.pd/genCodeblock",
+  "config": {
+    "inGlobal": true,
+    "exclude": [
+      "envTest.md"
+    ],
+    "templates": [
+      "./denoflare.ts",
+      "./templates/cli.ts",
+      "./templates/server.ts",
+      "./templates/worker.ts",
+      "./templates/test.ts",
+      "./templates/trace.ts"
+    ]
+  },
+  "name": "Very Impressive Codeblock",
+  "cleanName": "VeryImpressiveCodeblock",
+  "steps": [
+    {
+      "code": "{\"code\": \"export function generateCodeBlock(code: string, language: string = 'ts'): string {\\n    return `\\\\`\\\\`\\\\`${language}\\\\n${code}\\\\n\\\\`\\\\`\\\\``;\\n}\\n\\n// Example usage\\nconst jsCode = 'console.log(\\\"Hello, world!\\\");';\\nconsole.log(generateCodeBlock(jsCode)); // Uses default 'ts' language\\nconsole.log(generateCodeBlock(jsCode, 'javascript')); // Specifies 'javascript' language\"}\n",
+      "range": [
+        6,
+        6
+      ],
+      "name": "do it",
+      "funcName": "doit",
+      "inList": false,
+      "language": "ts",
+      "headingLevel": 2
+    }
+  ]
+}

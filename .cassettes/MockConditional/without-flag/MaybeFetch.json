@@ -1,0 +1,19 @@
+{
+  "pipeName": "Mock Conditional",
+  "stepName": "Maybe Fetch",
+  "stepIndex": 0,
+  "inputName": "without-flag",
+  "recordedAt": "2026-03-27T13:35:17.203Z",
+  "before": {
+    "_name": "without-flag",
+    "shouldFetch": false,
+    "mode": "test",
+    "test": true
+  },
+  "after": {
+    "_name": "without-flag",
+    "shouldFetch": false,
+    "mode": "test",
+    "test": true
+  }
+}

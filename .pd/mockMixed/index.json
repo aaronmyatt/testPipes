@@ -1,0 +1,72 @@
+{
+  "mdPath": "/Users/aaronmyatt/pipes/core/testPipes/mockMixed.md",
+  "fileName": "mockMixed",
+  "dir": ".pd/mockMixed",
+  "absoluteDir": "/Users/aaronmyatt/pipes/core/testPipes/.pd/mockMixed",
+  "config": {
+    "inGlobal": true,
+    "exclude": [
+      "envTest.md"
+    ],
+    "templates": [
+      "./denoflare.ts",
+      "./templates/cli.ts",
+      "./templates/server.ts",
+      "./templates/worker.ts",
+      "./templates/test.ts",
+      "./templates/trace.ts"
+    ],
+    "inputs": [
+      {
+        "_name": "mixed",
+        "prompt": "test prompt"
+      }
+    ]
+  },
+  "name": "Mock Mixed",
+  "cleanName": "MockMixed",
+  "steps": [
+    {
+      "code": "input.llmResponse = \"Generated text for: \" + input.prompt;\n",
+      "range": [
+        13,
+        13
+      ],
+      "name": "Call LLM",
+      "funcName": "CallLLM",
+      "inList": false,
+      "language": "ts",
+      "mock": true,
+      "headingLevel": 2,
+      "description": "Uses the codeblock info-string `mock` flag."
+    },
+    {
+      "code": "input.dbId = \"mock-id-12345\";\ninput.saved = true;\n",
+      "range": [
+        27,
+        27
+      ],
+      "name": "Save to DB",
+      "funcName": "SavetoDB",
+      "inList": true,
+      "language": "ts",
+      "mock": true,
+      "headingLevel": 2,
+      "description": "Uses the list directive `- mock` syntax.\nmock"
+    },
+    {
+      "code": "input.output = { response: input.llmResponse, id: input.dbId, saved: input.saved };\n",
+      "range": [
+        36,
+        36
+      ],
+      "name": "Return Result",
+      "funcName": "ReturnResult",
+      "inList": false,
+      "language": "ts",
+      "headingLevel": 2,
+      "description": "Pure step — assembles the final output."
+    }
+  ],
+  "pipeDescription": "Test both codeblock flag and list directive mock in the same pipe. Two different steps use two different mock syntax styles."
+}
