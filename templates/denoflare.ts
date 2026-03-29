@@ -1,6 +1,6 @@
 // a demonstration of how new "template" files can be introduced to pipedown via config.json
 
-import pipe from "./index.ts";
+import pipe from "../index.ts";
 export default {
   async fetch(request: Request): Promise<Response> {
     const output = await pipe.process({
