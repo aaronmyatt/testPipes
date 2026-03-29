@@ -144,6 +144,9 @@ input.results.push('✅ multiple mock inputs')
 ```
 
 ## multiple json config blocks
+
+Tests that when a pipe contains multiple JSON config blocks, all blocks are merged into the configuration and applied correctly, with later blocks taking precedence over earlier ones for any shared keys.
+
 ```ts
 import multipleJsonConfigs from 'multipleJsonConfigs'
 const out = await multipleJsonConfigs.process({ x: 1 })
@@ -154,6 +157,9 @@ input.results.push('✅ multiple json config blocks')
 ```
 
 ## skipped blocks stay skipped
+
+Tests that code blocks marked with a skip flag are not executed during pipe processing, verifying that active blocks before and after a skipped block run as expected, that the skipped block produces no output on the result object, and that the final computed value is unaffected by any logic inside the skipped block.
+
 ```ts
 import skipBlock from 'skipBlock'
 const out = await skipBlock.process({ value: 10 })
