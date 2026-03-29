@@ -40,6 +40,9 @@ input.results.push('✅ custom templates')
 ```
 
 ## nested config
+
+Tests that configuration variables defined in nested subdirectories are correctly resolved and accessible, verifying that a value from a deeper config.json is reachable via its full path.
+
 ```ts
 import test3 from 'deeperConfig'
 //Object.assign(input,await test2.process())
@@ -49,7 +52,9 @@ input.results.push('✅ NESTED config.json variables')
 ```
 
 ## should import with caps
-Markdown file names should be respected.
+
+Tests that pipe imports are case-sensitive and resolve correctly when the pipe name contains uppercase letters, verifying that a module named with mixed case can be imported and processed without normalisation or case-folding causing a lookup failure.
+
 ```ts
 import useCaps from 'UseCaps';
 const out = await useCaps.process();

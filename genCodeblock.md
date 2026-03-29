@@ -2,6 +2,13 @@
 
 ## do it
 
-```ts
-{"code": "export function generateCodeBlock(code: string, language: string = 'ts'): string {\n    return `\\`\\`\\`${language}\\n${code}\\n\\`\\`\\``;\n}\n\n// Example usage\nconst jsCode = 'console.log(\"Hello, world!\");';\nconsole.log(generateCodeBlock(jsCode)); // Uses default 'ts' language\nconsole.log(generateCodeBlock(jsCode, 'javascript')); // Specifies 'javascript' language"}
+```ts skip
+export function generateCodeBlock(code: string, language: string = 'ts'): string {
+    return `\`\`\`${language}\n${code}\n\`\`\``;
+}
+
+// Example usage
+const jsCode = 'console.log("Hello, world!");';
+console.log(generateCodeBlock(jsCode)); // Uses default 'ts' language
+console.log(generateCodeBlock(jsCode, 'javascript')); // Specifies 'javascript' language
 ```
