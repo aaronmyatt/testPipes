@@ -188,6 +188,61 @@ assert(!out.errors?.length, 'zodSchema produced unexpected validation errors')
 input.results.push('✅ zod schema pipes')
 ```
 
+## method directive parsing
+
+Tests that the `method:` DSL directive is correctly parsed from
+markdown list items into the step config's `methods` array in the
+generated index.json. Single and multiple method directives should
+be captured, and steps without the directive should have no methods.
+
+```ts
+import methodGuardPipe from 'methodGuard'
+const mgJson = methodGuardPipe.json
+
+// Step 0: "Handle GET Only" — should have methods: ["GET"]
+assert(mgJson.steps[0].config?.methods?.[0] === 'GET', 'method: GET not parsed into step config')
+assert(mgJson.steps[0].config.methods.length === 1, 'single method directive should produce one entry')
+
+// Step 1: "Handle POST Only" — should have methods: ["POST"]
+assert(mgJson.steps[1].config?.methods?.[0] === 'POST', 'method: POST not parsed into step config')
+
+// Step 2: "Handle Multiple Methods" — should have methods: ["GET", "PUT"]
+assert(mgJson.steps[2].config?.methods?.length === 2, 'multiple method directives should produce two entries')
+assert(mgJson.steps[2].config.methods[0] === 'GET', 'first method directive not parsed')
+assert(mgJson.steps[2].config.methods[1] === 'PUT', 'second method directive not parsed')
+
+// Step 3: "No Method Guard" — should have no config
+assert(!mgJson.steps[3].config, 'step without method: should have no config')
+
+input.results.push('✅ method directive parsing')
+```
+
+## content-type directive parsing
+
+Tests that the `type:` DSL directive is correctly parsed from
+markdown list items into the step config's `contentType` field in
+the generated index.json. Shorthand names and raw MIME types should
+both be stored as-is for runtime resolution by pdPipe.
+
+```ts
+import contentTypePipe from 'contentTypeDirective'
+const ctJson = contentTypePipe.json
+
+// Step 0: "JSON Response" — should have contentType: "json"
+assert(ctJson.steps[0].config?.contentType === 'json', 'type: json not parsed into step config')
+
+// Step 1: "HTML Response" — should have contentType: "html"
+assert(ctJson.steps[1].config?.contentType === 'html', 'type: html not parsed into step config')
+
+// Step 2: "Raw MIME Type" — should have contentType: "image/png"
+assert(ctJson.steps[2].config?.contentType === 'image/png', 'type: image/png not parsed into step config')
+
+// Step 3: "No Type Directive" — should have no config
+assert(!ctJson.steps[3].config, 'step without type: should have no config')
+
+input.results.push('✅ content-type directive parsing')
+```
+
 ## test results
 Log all collected results once and surface them on the pipe's output.
 ```ts
