@@ -9,7 +9,6 @@ $p.set(input, "/mode/cli", true);
 
 const output = await pipe.process(input)
 
-
 if(flags.json || flags.j) {
   console.log(JSON.stringify(output));
 } else {

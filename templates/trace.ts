@@ -145,12 +145,28 @@ pipe.stages = originalStages.map((stage, index) => {
 // --- Resolve project config ---
 
 function readProjectConfig(): Record<string, unknown> {
+  const projectRoot = "../../"; // .pd/<pipeName>/ -> project root
+  let base: Record<string, unknown> = {};
+
+  // Try deno.json -> pipedown first
   try {
-    const configText = Deno.readTextFileSync("../../config.json");
-    return JSON.parse(configText);
-  } catch {
-    return {};
-  }
+    const raw = JSON.parse(
+      Deno.readTextFileSync(projectRoot + "deno.json"),
+    );
+    if (raw.pipedown && typeof raw.pipedown === "object") {
+      base = raw.pipedown;
+    }
+  } catch { /* not found */ }
+
+  // Layer config.json on top (override)
+  try {
+    const legacy = JSON.parse(
+      Deno.readTextFileSync(projectRoot + "config.json"),
+    );
+    Object.assign(base, legacy);
+  } catch { /* not found */ }
+
+  return base;
 }
 
 function resolveProjectName(config: Record<string, unknown>): string {
@@ -195,9 +211,16 @@ async function writeTrace(
   const traceDir = `${home}/.pipedown/traces/${projectName}/${pipeName}`;
   await Deno.mkdir(traceDir, { recursive: true });
 
+  // ── Timestamp strategy ──
+  // Use Unix epoch milliseconds for the filename — this sorts correctly as
+  // both a number and a string, and avoids the colon/dot mangling that the
+  // old ISO-based filenames required.
+  // The `timestamp` property inside the JSON stays as a proper ISO-8601
+  // string for human readability.
+  // Ref: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/getTime
   const now = new Date();
   const timestamp = now.toISOString();
-  const fileTimestamp = timestamp.replace(/[:.]/g, "-");
+  const fileTimestamp = String(now.getTime());
 
   const trace = {
     pipeName,
@@ -231,7 +254,7 @@ const pipelineDuration =
   Math.round((performance.now() - pipelineStart) * 100) / 100;
 
 await writeTrace(
-  rawPipe.name,
+  rawPipe.fileName || rawPipe.name || "unknown-pipe-"+Date.now(),
   traceLog,
   originalInput,
   output,

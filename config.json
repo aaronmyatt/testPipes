@@ -4,9 +4,9 @@
         "envTest.md"
     ],
     "templates": [
-        "./templates/denoflare.ts",
         "./templates/cli.ts",
         "./templates/server.ts",
+        "./templates/devServer.ts",
         "./templates/worker.ts",
         "./templates/test.ts",
         "./templates/trace.ts"

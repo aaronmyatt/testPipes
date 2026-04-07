@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-deno run -A ../pipedown/pdCli/mod.ts $@

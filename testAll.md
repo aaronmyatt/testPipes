@@ -3,6 +3,7 @@
 A simple wrapper to run all test pipes at once.
 
 ## Headerless pipes are ok
+
 [[123shouldwork.md]]
 More accurately, a pipe that is prefixed with numbers, should work.
 ```ts
@@ -17,9 +18,10 @@ input.results.push('✅ pipes with numbers in their names')
 ```
 
 ## dailyWallpaper
+
 [[dailyWallpaper]]
 This has been my primary test vehicle since the beginning.
-It downloads the "photo of the day" from wikipedia. 
+It downloads the "photo of the day" from wikipedia.
 Not appropriate as a "unit" test tho, too many side effects.
 Just keeping this here as reference.
 ```ts skip
@@ -27,15 +29,16 @@ import dw from "dailyWallpaper"
 await dw.process()
 ```
 
-## Denoflare template
-When a `"templates": ["./denoflare.ts"]` property is present in config.json
+## Trace template
+
+When a `"templates": ["./trace.ts"]` property is present in config.json
 the files will be written to each pipe directory generate by pipedown.
 ```ts
 import $ from 'jsr:@david/dax';
 import { assert } from "jsr:@std/assert";
 
 const dirFiles = await $`ls .pd/123shouldwork/`.text()
-assert(dirFiles.includes('denoflare'), 'Denoflare template not found')
+assert(dirFiles.includes('trace'), 'Trace template not found')
 input.results.push('✅ custom templates')
 ```
 
@@ -63,6 +66,7 @@ input.results.push('✅ capitalisation is respected')
 ```
 
 ## errors will be passed back to the caller for handling
+
 ```ts
 import test4 from 'shouldThrow'
 const out = await test4.process()
@@ -71,6 +75,7 @@ input.results.push('✅ errors will be passed back to the caller for handling')
 ```
 
 ## configurable export formats
+
 ```ts
 const dirFiles = await $`ls .pd/exportIt/`.text()
 assert(dirFiles.includes('iife'), 'iife export not found')
@@ -80,6 +85,7 @@ input.results.push('✅ configurable export formats')
 ```
 
 ## edge case step names
+
 ```ts
 import edgeCases from 'edgeCases'
 const out = await edgeCases.process({ value: 42 })
@@ -88,6 +94,7 @@ input.results.push('✅ edge case step names')
 ```
 
 ## generated codeblock fixture
+
 ```ts
 const genCodeblockSource = await Deno.readTextFile('genCodeblock.md')
 assert(genCodeblockSource.includes('export function generateCodeBlock'), 'genCodeblock fixture is missing the embedded source')
@@ -96,6 +103,7 @@ input.results.push('✅ generated codeblock fixture')
 ```
 
 ## mock codeblock flag
+
 ```ts
 import mockBasic from 'mockBasic'
 const out = await mockBasic.process({ value: 10 })
@@ -105,6 +113,7 @@ input.results.push('✅ mock codeblock flag')
 ```
 
 ## mock conditionals
+
 ```ts
 import mockConditional from 'mockConditional'
 const fetched = await mockConditional.process({ shouldFetch: true })
@@ -115,6 +124,7 @@ input.results.push('✅ mock conditionals')
 ```
 
 ## mock list directives
+
 ```ts
 import mockDirective from 'mockDirective'
 const out = await mockDirective.process({ query: 'hello world' })
@@ -124,6 +134,7 @@ input.results.push('✅ mock list directives')
 ```
 
 ## mixed mock styles
+
 ```ts
 import mockMixed from 'mockMixed'
 const out = await mockMixed.process({ prompt: 'test prompt' })
@@ -134,6 +145,7 @@ input.results.push('✅ mixed mock styles')
 ```
 
 ## multiple mock inputs
+
 ```ts
 import mockMultipleInputs from 'mockMultipleInputs'
 const small = await mockMultipleInputs.process({ count: 3 })
@@ -171,6 +183,7 @@ input.results.push('✅ skipped blocks stay skipped')
 ```
 
 ## conditional list tests
+
 ```ts
 import testTests from 'testTests'
 const out = await testTests.process({ points: { add: true, amount: 1 } })
@@ -179,6 +192,7 @@ input.results.push('✅ conditional list tests')
 ```
 
 ## zod schema pipes
+
 ```ts
 import zodSchema from 'zodSchema'
 const out = await zodSchema.process({ name: 'World' })
@@ -244,9 +258,12 @@ input.results.push('✅ content-type directive parsing')
 ```
 
 ## test results
+
 Log all collected results once and surface them on the pipe's output.
 ```ts
 // Print every result line to stdout in a single pass,
 // so the test report is easy to scan in the terminal.
 console.log(input.results.join('\n'))
 ```
+
+wat
